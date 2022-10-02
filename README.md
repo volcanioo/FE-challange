@@ -29,3 +29,6 @@ A server will also start on http://localhost:8000
 - [x] The players should not be able to continue rolling once the game has ended.
 
 ## Take a look
+
+https://user-images.githubusercontent.com/14016028/193445842-98c10f75-c364-4533-8bcb-e9f857a90695.mov
+
