@@ -1,6 +1,8 @@
 # Tech Assigment
 Thank you so much for for the oppurtunity! I really enjoyed working on this small app.
 
+Please don't hesitate to create a new issue to share your ideas and feedback with me. I am super looking forward to hearing from you! :)
+
 ## How to run
 ```sh
 npm install
