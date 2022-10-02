@@ -1,0 +1,69 @@
+.user {
+  width: 20%;
+  padding: 10px;
+  border: 3px solid #DD596E;
+  margin: 10px;
+  text-align: center;
+  transition: all .3s;
+
+  h2 {
+    margin-bottom: 0;
+  }
+
+  &--winner {
+    color: #1c1b22;
+    background: #F8DB55;
+    border-color: #F8DB55;
+    text-align: center;
+
+    .user__button {
+      background: white;
+    }
+  }
+
+  img {
+    width: 100%;
+    display: block;
+    height: auto;
+  }
+
+  &__button {
+    width: 100%;
+    background: #dd596e;
+    border: none;
+    line-height: 34px;
+    margin-top: 10px;
+    cursor: pointer;
+
+    &:hover {
+      opacity: .9;
+    }
+
+    &[disabled] {
+      opacity: .2;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .wrapper {
+    flex-wrap: wrap;
+  }
+
+  .user {
+    flex: 0 0 33.3%;
+  }
+  
+  .user figure, .user h2 {
+    margin: 0;
+  }
+
+  .winner-badge {
+    background: white;
+    padding: 10px;
+    text-align: center;
+    color: black;
+    margin: 0px 0 10px 0;
+    font-size: 14px;
+  }
+}

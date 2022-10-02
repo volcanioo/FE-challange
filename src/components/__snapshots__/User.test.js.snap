@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`checks if it shows winner badge 1`] = `
+<section
+  className="user user--winner"
+>
+  <figure>
+    <img
+      alt="the user avatar"
+      src="https://www.fillmurray.com/200/300"
+    />
+  </figure>
+  <h2>
+    John
+  </h2>
+  <h3>
+    🎉 WINNER 🎉
+  </h3>
+  <span>
+    Score: 
+    55
+  </span>
+</section>
+`;
+
+exports[`snapshot check 1`] = `
+<section
+  className="user"
+>
+  <figure>
+    <img
+      alt="the user avatar"
+      src="https://www.fillmurray.com/200/300"
+    />
+  </figure>
+  <h2>
+    John
+  </h2>
+  <span>
+    Score: 
+    55
+  </span>
+</section>
+`;
