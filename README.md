@@ -1,7 +1,9 @@
 # Tech Assigment
 Thank you so much for for the oppurtunity! I really enjoyed working on this small app.
 
-Please don't hesitate to create a new issue to share your ideas and feedback with me. I am super looking forward to hearing from you! :)
+Now, I am super looking forward to hearing from you to get more ideas of how I could improve this;
+* You can [create a new issue](https://github.com/volcanioo/fe-challange/issues/new) and share your ideas & feedback with me.
+* You can text me on [Linkedin](https://www.linkedin.com/in/volkandeveci/). 
 
 ## How to run
 ```sh
