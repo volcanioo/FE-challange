@@ -1,8 +1,12 @@
 {
-  "name": "babbel-fe-coding-challenge",
+  "name": "fe-challenge",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:volcanioo/fe-challange.git"
+  },
   "scripts": {
     "test": "jest --config jest.json",
     "start": "concurrently --kill-others \"npm run start:server\" \"npm run start:app\"",
