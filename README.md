@@ -6,6 +6,7 @@ Thank you so much for for the oppurtunity! I really enjoyed working on this smal
 
 * [How to run?](#how-to-run)
 * [Video](#take-a-look)
+* [Requirements](#challenge-description)
 * [My Thought Process](#my-thought-process)
 
 <hr>
