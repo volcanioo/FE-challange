@@ -13,12 +13,7 @@ const App = () => {
   const [scoreToWin, setScoreToWin] = useState(0);
   const [currentDice, setCurrentDice] = useState(0);
   const [playingPlayerIndex, setPlayingPlayerIndex] = useState(0);
-  const rollDice = () => {
-    const newDice = Math.floor(Math.random() * 6) + 1;
-    if (currentDice === newDice) return rollDice();
-
-    setCurrentDice(newDice);
-  }
+  const rollDice = () => setCurrentDice(Math.floor(Math.random() * 6) + 1);
   const initGame = () => {
     setWinner(null);
     setPlayingPlayerIndex(0);
