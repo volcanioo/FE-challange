@@ -44,7 +44,7 @@ const App = () => {
   // When the current dice changes
   useEffect(() => {
     // update the score of the current player
-    setPlayers(players.map((player, index) => {
+    const playersWithScores = players.map((player, index) => {
       if (index === playingPlayerIndex) {
         const scores =
           player.scores ? player.scores.concat([currentDice]) : [currentDice];
@@ -60,7 +60,8 @@ const App = () => {
       }
 
       return player;
-    }));
+    })
+    setPlayers(playersWithScores);
 
     // update the playing player index
     if (playingPlayerIndex < players.length - 1) {
@@ -90,7 +91,7 @@ const App = () => {
             name={player.name}
             image={player.imageUrl}
             scores={player.scores}
-            nextMoveFunc={playingPlayerIndex === index ? rollDice : null}
+            hasNextMoveFunc={playingPlayerIndex === index ? rollDice : null}
             isWinner={winner && winner.id === player.id}
           />
         ))}
