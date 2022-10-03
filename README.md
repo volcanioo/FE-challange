@@ -58,6 +58,6 @@ https://user-images.githubusercontent.com/14016028/193445842-98c10f75-c364-4533-
 2. Development the logic that hide/show the rolling button in the `User` component
       1. The `isPlaying` property to the `User` component. This property is used to hide/show the rolling button.
       2. The `isWinner` property to the `User` component. This property is used to show the winner message.
-      2. The `nextMoveFunc` property to the `User` component. This property is used to bind a function if there is an available next move that can be done by the player dependently on the `playingPlayerIndex` condition. `index.js:98` In that way, I can show/hide the rolling button at the player level.
+      2. The `nextMoveFunc` property to the `User` component. This property is used to bind a function if there is an available next move that can be done by the player dependently on the condition of `playingPlayerIndex` in `index.js:98` -in that way, I can show/hide the rolling button at the player level.
 
 Thank you so much for taking your time and trying to understand how I approached this challange. **Does these make sense for you?** I would love to hear your improvement ideas, thoughts and feedbacks. Please don't hesitate to approach me via [Linkedin](https://www.linkedin.com/in/volkandeveci/). I will be always happy to hear from you.
