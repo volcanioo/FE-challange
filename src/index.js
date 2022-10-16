@@ -2,7 +2,7 @@ import React, { useEffect, useMemo } from "react";
 import { render } from "react-dom";
 import User from './components/user';
 import { useState } from "react";
-import axios from 'axios';
+import { fetchGame, endGame } from "./services/api";
 
 import "./index.scss";
 
@@ -18,27 +18,15 @@ const App = () => {
     setWinner(null);
     setPlayingPlayerIndex(0);
 
-    axios.get("http://localhost:8000/api/game")
-      .then(function (response) {
-        setPlayers(response.data.players);
-        setMatchId(response.data.matchId);
-        setScoreToWin(response.data.scoreToWin);
+    fetchGame()
+      .then((response) => {
+        setPlayers(response.players);
+        setMatchId(response.matchId);
+        setScoreToWin(response.scoreToWin);
       })
-      .catch(function (error) {
-        console.err(error);
-      });
   }
   const startNewGame = () => {
-    axios.post("http://localhost:8000/api/game", {
-      matchId,
-      winnerId: playingPlayerIndex,
-    }).then((response) => {
-      console.log(response)
-    }).catch((err) => {
-      console.error(err);
-    });
-
-    initGame();
+    endGame(matchId, playingPlayerIndex).then(initGame());
   }
 
   // When the current dice changes
