@@ -2,7 +2,7 @@ import React from 'react'
 
 import "./User.scss";
 
-function user({name, image, scores, nextMoveFunc, isWinner}) {
+function user({name, image, scores, hasNextMoveFunc, isWinner}) {
   const className = isWinner ? "user user--winner" : "user";
   return (
     <>
@@ -13,11 +13,11 @@ function user({name, image, scores, nextMoveFunc, isWinner}) {
         <h2>{name}</h2>
         {isWinner ? <h3>🎉 WINNER 🎉</h3> : null}
         <span>Score: {scores ? scores.reduce((x, y) => x + y) : 0}</span>
-        {nextMoveFunc && isWinner === null &&
+        {hasNextMoveFunc && isWinner === null &&
           <>
             <button
               className='user__button'
-              onClick={() => nextMoveFunc()}
+              onClick={() => hasNextMoveFunc()}
             >
               Roll
             </button>

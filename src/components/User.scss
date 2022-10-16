@@ -1,7 +1,11 @@
+$yellow: #F8DB55;
+$red: #DD596E;
+$dark: #1c1b22;
+
 .user {
   width: 20%;
   padding: 10px;
-  border: 3px solid #DD596E;
+  border: 3px solid $red;
   margin: 10px;
   text-align: center;
   transition: all .3s;
@@ -11,9 +15,9 @@
   }
 
   &--winner {
-    color: #1c1b22;
-    background: #F8DB55;
-    border-color: #F8DB55;
+    color: $dark;
+    background: $yellow;
+    border-color: $yellow;
     text-align: center;
 
     .user__button {
@@ -29,7 +33,7 @@
 
   &__button {
     width: 100%;
-    background: #dd596e;
+    background: $red;
     border: none;
     line-height: 34px;
     margin-top: 10px;

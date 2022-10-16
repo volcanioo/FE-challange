@@ -1,3 +1,5 @@
+$blue: #615cf5;
+
 html,
 body {
   padding: 0;
@@ -22,7 +24,7 @@ header {
   line-height: 60px;
   font-size: 24px;
   border: none;
-  background: hsl(242deg 88% 66%);
+  background: $blue;
   cursor: pointer;
   color: white;
   position: fixed;
