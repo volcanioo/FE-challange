@@ -9,6 +9,7 @@ Thank you so much for for the oppurtunity! I really enjoyed working on this smal
 * [Requirements](#challenge-description)
 * [My Thought Process](#my-thought-process)
     * You can also check my new PR called "Further Improvements" https://github.com/volcanioo/fe-challange/pull/1 to see what do I think can be improved at first glance.
+    * You can also check my new PR called "Refactoring" https://github.com/volcanioo/fe-challange/pull/2.
 
 <hr>
 
