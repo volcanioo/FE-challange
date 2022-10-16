@@ -7,6 +7,7 @@ import { fetchGame, endGame } from "./services/api";
 import "./index.scss";
 
 const App = () => {
+  const [loading, setLoading] = useState(false);
   const [players, setPlayers] = useState([]);
   const [match, setMatch] = useState({});
   const [winner, setWinner] = useState(null);
@@ -14,7 +15,8 @@ const App = () => {
   const [playingPlayerIndex, setPlayingPlayerIndex] = useState(0);
   const rollDice = () => setCurrentDice(Math.floor(Math.random() * 6) + 1);
   const initGame = () => {
-    setMatch({});
+    setWinner(null);
+    setLoading(true);
 
     fetchGame()
       .then((response) => {
@@ -24,6 +26,7 @@ const App = () => {
           scoreToWin: response.scoreToWin,
         })
       })
+      .finally(() => setLoading(false));
   }
   const startNewGame = () => {
     endGame(match.id, winner.id).then(initGame());
@@ -73,7 +76,10 @@ const App = () => {
         <h2> 🚀 Congratulations, {winner.name} is the Winner! 🚀</h2>
       </section> : null}
       <section className="wrapper">
-        {players.map((player, index) => (
+        {loading ? 
+        <section className="loading">
+          <h2>Loading...</h2>
+        </section> : players.map((player, index) => (
           <User
             key={player.id}
             name={player.name}
