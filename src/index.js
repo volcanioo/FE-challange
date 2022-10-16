@@ -2,43 +2,34 @@ import React, { useEffect, useMemo } from "react";
 import { render } from "react-dom";
 import User from './components/user';
 import { useState } from "react";
-import axios from 'axios';
+import { fetchGame, endGame } from "./services/api";
 
 import "./index.scss";
 
 const App = () => {
+  const [loading, setLoading] = useState(false);
   const [players, setPlayers] = useState([]);
+  const [match, setMatch] = useState({});
   const [winner, setWinner] = useState(null);
-  const [matchId, setMatchId] = useState(null);
-  const [scoreToWin, setScoreToWin] = useState(0);
   const [currentDice, setCurrentDice] = useState(0);
   const [playingPlayerIndex, setPlayingPlayerIndex] = useState(0);
   const rollDice = () => setCurrentDice(Math.floor(Math.random() * 6) + 1);
   const initGame = () => {
     setWinner(null);
-    setPlayingPlayerIndex(0);
+    setLoading(true);
 
-    axios.get("http://localhost:8000/api/game")
-      .then(function (response) {
-        setPlayers(response.data.players);
-        setMatchId(response.data.matchId);
-        setScoreToWin(response.data.scoreToWin);
+    fetchGame()
+      .then((response) => {
+        setPlayers(response.players);
+        setMatch({
+          id: response.matchId,
+          scoreToWin: response.scoreToWin,
+        })
       })
-      .catch(function (error) {
-        console.err(error);
-      });
+      .finally(() => setLoading(false));
   }
   const startNewGame = () => {
-    axios.post("http://localhost:8000/api/game", {
-      matchId,
-      winnerId: playingPlayerIndex,
-    }).then((response) => {
-      console.log(response)
-    }).catch((err) => {
-      console.error(err);
-    });
-
-    initGame();
+    endGame(match.id, winner.id).then(initGame());
   }
 
   // When the current dice changes
@@ -49,7 +40,7 @@ const App = () => {
         const scores =
           player.scores ? player.scores.concat([currentDice]) : [currentDice];
         
-        if (scores.reduce((x, y) => x + y) >= scoreToWin) {
+        if (scores.reduce((x, y) => x + y) >= match.scoreToWin) {
           setWinner(player);
         }
 
@@ -78,14 +69,17 @@ const App = () => {
   return (
     <>
       <header>
-        <h1>Game: {matchId}</h1>
-        <h2>Score to win: {scoreToWin}</h2>
+        <h1>Game: {match.id}</h1>
+        <h2>Score to win: {match.scoreToWin}</h2>
       </header>
       {winner ? <section className="winner-badge">
         <h2> 🚀 Congratulations, {winner.name} is the Winner! 🚀</h2>
       </section> : null}
       <section className="wrapper">
-        {players.map((player, index) => (
+        {loading ? 
+        <section className="loading">
+          <h2>Loading...</h2>
+        </section> : players.map((player, index) => (
           <User
             key={player.id}
             name={player.name}
