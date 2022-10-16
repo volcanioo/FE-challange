@@ -8,25 +8,25 @@ import "./index.scss";
 
 const App = () => {
   const [players, setPlayers] = useState([]);
+  const [match, setMatch] = useState({});
   const [winner, setWinner] = useState(null);
-  const [matchId, setMatchId] = useState(null);
-  const [scoreToWin, setScoreToWin] = useState(0);
   const [currentDice, setCurrentDice] = useState(0);
   const [playingPlayerIndex, setPlayingPlayerIndex] = useState(0);
   const rollDice = () => setCurrentDice(Math.floor(Math.random() * 6) + 1);
   const initGame = () => {
-    setWinner(null);
-    setPlayingPlayerIndex(0);
+    setMatch({});
 
     fetchGame()
       .then((response) => {
         setPlayers(response.players);
-        setMatchId(response.matchId);
-        setScoreToWin(response.scoreToWin);
+        setMatch({
+          id: response.matchId,
+          scoreToWin: response.scoreToWin,
+        })
       })
   }
   const startNewGame = () => {
-    endGame(matchId, playingPlayerIndex).then(initGame());
+    endGame(match.id, winner.id).then(initGame());
   }
 
   // When the current dice changes
@@ -37,7 +37,7 @@ const App = () => {
         const scores =
           player.scores ? player.scores.concat([currentDice]) : [currentDice];
         
-        if (scores.reduce((x, y) => x + y) >= scoreToWin) {
+        if (scores.reduce((x, y) => x + y) >= match.scoreToWin) {
           setWinner(player);
         }
 
@@ -66,8 +66,8 @@ const App = () => {
   return (
     <>
       <header>
-        <h1>Game: {matchId}</h1>
-        <h2>Score to win: {scoreToWin}</h2>
+        <h1>Game: {match.id}</h1>
+        <h2>Score to win: {match.scoreToWin}</h2>
       </header>
       {winner ? <section className="winner-badge">
         <h2> 🚀 Congratulations, {winner.name} is the Winner! 🚀</h2>
